@@ -56,6 +56,10 @@ class AdController extends Controller
         try {
             $ad = Ad::where('id', $id)->first();
 
+            if (!$ad) {
+                return response(['status' => 'error', 'response' => ['message' => 'Ad not found']], HttpResponse::HTTP_NOT_FOUND);
+            }
+
             $response = [
                 'title' => $ad->title,
                 'price' => $ad->price,
