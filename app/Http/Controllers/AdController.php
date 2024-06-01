@@ -96,7 +96,7 @@ class AdController extends Controller
                 throw new Exception('An error occurred during saving. Please contact technical support.');
             }
 
-            return response(['status' => 'success', 'response' => ['ads' => $ads->id]]);
+            return response(['status' => 'success', 'response' => ['ads' => $ads->id]], 201);
         } catch (\Exception $e) {
             return response(['status' => 'error', 'response' => [$e->getMessage()]], HttpResponse::HTTP_BAD_REQUEST);
         }
